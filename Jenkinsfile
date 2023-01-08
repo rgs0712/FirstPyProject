@@ -4,13 +4,18 @@ pipeline{
 
     stages{
         stage('Build'){
-            steps{
-                echo 'building ...'
+            steps {
+                echo "build .."
             }
         }
         stage('test'){
             steps{
-                echo 'test ...'
+                deleteDir()
+                checkout scm
+                sh """
+                    behave --junit
+                """
+                junit 'reports/*.xml'  // (1)
             }
         }
     }
