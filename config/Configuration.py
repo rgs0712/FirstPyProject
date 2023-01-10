@@ -4,7 +4,7 @@ import json
 class Configuration:
     def __init__(self, environment):
         self.environment = environment
-        properties = open('/home/rafael/projects/FirstPyProject/Properties.json')
+        properties = open('Properties.json')
         environmentList = json.load(properties)
 
         for env in environmentList:
